@@ -1,6 +1,6 @@
 package com.jiju.services.urlshortner.interfaces;
 
-public interface UrlShortnerService {
+public interface UrlShortenerService {
     String getShortUrl(String longUrl);
     String getLongUrl(String shortUrl);
 }

@@ -7,11 +7,11 @@ import java.math.BigInteger;
 
 @Service
 public class Base62ServiceImpl implements Base62Service {
-    private BigInteger b62=new BigInteger("62");
+    private final BigInteger b62=new BigInteger("62");
 
     @Override
     public String getBase62String(BigInteger counter){
-        char map[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        char[] map = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                 .toCharArray();
 
         StringBuilder sb = new StringBuilder();

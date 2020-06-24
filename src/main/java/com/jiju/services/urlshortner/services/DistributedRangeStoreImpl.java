@@ -2,6 +2,7 @@ package com.jiju.services.urlshortner.services;
 
 import com.jiju.services.urlshortner.interfaces.DistributedRangeStore;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -24,19 +25,22 @@ public class DistributedRangeStoreImpl implements DistributedRangeStore {
         COMPLETED
     }
 
+    @Value( "${each.range.in.power.of2}" )
+    private int eachRangeInPowerOf2;
+
+    @Value( "${max.range.in.power.of2}" )
+    private int maxRangeInPowerOf2;
+
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
 
     private BigInteger rangeStart;
     private BigInteger rangeEnd;
 
-    public DistributedRangeStoreImpl() throws InterruptedException {
-        init();
-    }
-
-    private synchronized void init() throws InterruptedException {
-        this.eachRange = BigInteger.TWO.pow(20);
-        this.maxRange = BigInteger.TWO.pow(24);
+    @PostConstruct
+    public synchronized void init() {
+        this.eachRange = BigInteger.TWO.pow(eachRangeInPowerOf2);
+        this.maxRange = BigInteger.TWO.pow(maxRangeInPowerOf2);
         this.numRanges =maxRange.divide(eachRange);
     }
 

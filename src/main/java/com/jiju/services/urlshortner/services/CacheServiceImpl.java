@@ -18,10 +18,6 @@ public class CacheServiceImpl implements CacheService {
 
     @Override
     public String getLongUrlFromCache(String shortUrl) {
-        Object o = redisTemplate.opsForValue().get(shortUrl);
-        if(o==null)
-            return null;
-        else
-            return (String)o;
+        return redisTemplate.opsForValue().get(shortUrl);
     }
 }

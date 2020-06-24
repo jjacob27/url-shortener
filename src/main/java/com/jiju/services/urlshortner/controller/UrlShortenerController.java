@@ -1,7 +1,7 @@
 package com.jiju.services.urlshortner.controller;
 
 import com.jiju.services.urlshortner.beans.Url;
-import com.jiju.services.urlshortner.interfaces.UrlShortnerService;
+import com.jiju.services.urlshortner.interfaces.UrlShortenerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import java.net.URL;
 
 @RestController
 @RequestMapping("/url")
-public class UrlShortnerController {
+public class UrlShortenerController {
 
     @Autowired
-    private UrlShortnerService shortnerService;
+    private UrlShortenerService shortnerService;
 
     @GetMapping(path="/short", consumes= MediaType.APPLICATION_JSON_VALUE
             ,produces=MediaType.APPLICATION_JSON_VALUE)
