@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CacheServiceImpl implements CacheService {
     @Autowired
-    RedisTemplate<String,String> redisTemplate;
+    private RedisTemplate<String,String> redisTemplate;
 
     @Override
     public void storeInCache(String shortUrl, String longUrl) {

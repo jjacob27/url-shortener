@@ -11,16 +11,16 @@ import java.net.URL;
 public class UrlShortnerServiceImpl implements UrlShortnerService {
     private String ourShortDomain = "www.turl.us";
     @Autowired
-    Base62Service base62Service;
+    private Base62Service base62Service;
 
     @Autowired
-    CounterService counterService;
+    private CounterService counterService;
 
     @Autowired
-    UrlPersistenceService persistenceService;
+    private UrlPersistenceService persistenceService;
 
     @Autowired
-    CacheService cacheService;
+    private CacheService cacheService;
 
     @Override
     public String getShortUrl(String longUrl) {

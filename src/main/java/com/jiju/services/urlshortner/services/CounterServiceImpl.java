@@ -11,7 +11,7 @@ import java.math.BigInteger;
 public class CounterServiceImpl implements CounterService {
 
     @Autowired
-    DistributedRangeStore store;
+    private DistributedRangeStore store;
 
     private boolean inited =false;
 

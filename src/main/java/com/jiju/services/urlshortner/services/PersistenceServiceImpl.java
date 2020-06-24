@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersistenceServiceImpl implements UrlPersistenceService {
     @Autowired
-    UrlRepository repository;
+    private UrlRepository repository;
 
     @Override
     public void storeUrls(String shortUrl, String longUrl) {

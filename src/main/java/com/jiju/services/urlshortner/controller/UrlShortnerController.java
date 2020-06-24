@@ -15,7 +15,7 @@ import java.net.URL;
 public class UrlShortnerController {
 
     @Autowired
-    UrlShortnerService shortnerService;
+    private UrlShortnerService shortnerService;
 
     @GetMapping(path="/short", consumes= MediaType.APPLICATION_JSON_VALUE
             ,produces=MediaType.APPLICATION_JSON_VALUE)
