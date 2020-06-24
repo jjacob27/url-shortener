@@ -4,4 +4,5 @@ import java.math.BigInteger;
 
 public interface DistributedRangeStore {
     BigInteger[] getRange();
+    BigInteger[] getNewRange();
 }

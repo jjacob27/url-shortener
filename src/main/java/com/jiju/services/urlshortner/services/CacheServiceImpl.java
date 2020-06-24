@@ -6,18 +6,19 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
+@SuppressWarnings("unused")
 public class CacheServiceImpl implements CacheService {
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
     @Override
     public void storeInCache(String shortUrl, String longUrl) {
-        redisTemplate.opsForHash().put("URL",shortUrl,longUrl);
+        redisTemplate.opsForValue().set(shortUrl,longUrl);
     }
 
     @Override
     public String getLongUrlFromCache(String shortUrl) {
-        Object o = redisTemplate.opsForHash().get("URL",shortUrl);
+        Object o = redisTemplate.opsForValue().get(shortUrl);
         if(o==null)
             return null;
         else

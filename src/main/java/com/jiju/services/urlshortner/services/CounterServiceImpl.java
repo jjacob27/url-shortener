@@ -30,7 +30,7 @@ public class CounterServiceImpl implements CounterService {
            return returnValue;
         } else {
             // get a new range
-            init();
+            getNewRange();
             BigInteger returnValue = BigInteger.ZERO.add(counterCurrent);
             counterCurrent = counterCurrent.add(BigInteger.ONE);
             return returnValue;
@@ -39,6 +39,14 @@ public class CounterServiceImpl implements CounterService {
 
     private void init() {
         BigInteger[] res = store.getRange();
+        counterStart = res[0];
+        counterMax = res[1];
+        counterCurrent = counterStart;
+        inited = true;
+    }
+
+    private void getNewRange() {
+        BigInteger[] res = store.getNewRange();
         counterStart = res[0];
         counterMax = res[1];
         counterCurrent = counterStart;
